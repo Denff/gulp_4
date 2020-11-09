@@ -1,0 +1,13 @@
+'use strict';
+
+var EOL = require('os').EOL;
+
+module.exports = function(entity, naming) {
+    return [
+
+`@import "../../styles/helpers/_helpers";
+
+.${naming.stringify(entity)} {}
+`
+    ].join(EOL);
+};

@@ -1,0 +1,41 @@
+@mixin font-mixin ($style, $main-path, $family, $map) {
+    $dir-name: $family + "/"; // Генерируем название директории, в которой находится шрифт
+    @each $weight, $path in $map {
+        @font-face {
+            font-display: swap;
+            font-family: $family;
+            src: url("#{$main-path + $dir-name + $style + $path}.eot");
+            src: url("#{$main-path + $dir-name + $style + $path}.eot?#iefix") format("embedded-opentype"),
+                url("#{$main-path + $dir-name + $style + $path}.woff2") format("woff2"),
+                url("#{$main-path + $dir-name + $style + $path}.woff") format("woff"),
+                url("#{$main-path + $dir-name + $style + $path}.ttf")  format("truetype"),
+                url("#{$main-path + $dir-name + $style + $path}.svg##{$family}")  format("svg");
+            font-style: $style;
+            font-weight: $weight;
+        }
+    }
+}
+
+// Создаем переменную, с указанием пути до корневой папки.
+// Путь указывается относительно файла css.
+// Например: $EXAMPLE-path: '../fonts/';
+
+// Создаем переменную с названием шрифта. Значение должно соответствовать названию
+// директории в которой будет лежать шрифт относительно корневой папки
+// Например: $EXAMPLE-name: 'Helvetica';
+
+// Создаем мап с парами 'жирность : название файла' относительно папки с шрифтом
+// Например:
+// $EXAMPLE-map: (
+//   100:'/HelveticaLight',
+//   400:'/HelveticaBold',
+//   700:'/HelveticaExtraBold'
+// );
+//
+// вызываем: @include font-mixin(normal, $EXAMPLE-path,  $EXAMPLE-name, $EXAMPLE-map)
+//
+// вместо $EXAMPLE пишем свое название переменной
+// в итоге путь самого шрифта должен быть такой:
+// '../fonts/НАЗВАНИ_ШРИФТА/normal/НАЗВАНИЕ_ФАЙЛА_ШРИФТА'
+// или
+// '../fonts/НАЗВАНИ_ШРИФТА/italic/НАЗВАНИЕ_ФАЙЛА_ШРИФТА'

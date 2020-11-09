@@ -1,0 +1,31 @@
+extends layout/default
+
+block variables
+    - const title = "Главная";
+    - const description = '';
+    - const keywords = '';
+    - const pageClass = '';
+
+block styles
+    +style("http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css")
+    +style('https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css')
+    //- +style('https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.css')
+    +style('https://cdn.jsdelivr.net/npm/lightgallery/dist/css/lightgallery.min.css')
+    +style('css/common.min.css')        // базовые стили
+    +style('css/lightgallery.css')      // фотогаллерея
+
+block scripts
+    +script('https://cdn.jsdelivr.net/npm/jquery@1.11.0/dist/jquery.min.js')
+    +script('https://cdn.jsdelivr.net/npm/jquery-once@2.2.0/jquery.once.min.js')
+    +script("https://code.jquery.com/ui/1.11.4/jquery-ui.min.js")
+    +script('https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js')
+    //- +script('https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js')
+    +script('https://cdn.jsdelivr.net/npm/lightgallery/dist/js/lightgallery-all.min.js')
+    +script('https://cdn.jsdelivr.net/npm/inputmask/dist/min/jquery.inputmask.bundle.min.js')
+    +script('js/lightgallery.js')       // фотогаллерея
+    +script('js/theme.min.js')          // кастомный файл
+
+block content
+    +b.wrapper
+        .container Содержимое страницы
+        //- include ../components/hd/hd

@@ -1,0 +1,14 @@
+@mixin placeholder() {
+  &::-webkit-input-placeholder {@content;}
+  &::-moz-placeholder {@content;}
+  &:-moz-placeholder {@content;}
+  &:-ms-input-placeholder {@content;}
+}
+
+@mixin fontAwesome($size: inherit, $weight: normal) {
+  font-family: 'Font Awesome 5 Pro';
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 1;
+  position: absolute;
+}

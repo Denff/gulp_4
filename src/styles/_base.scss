@@ -1,0 +1,147 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
+}
+body, div, table, tr, td, h1, h2, h3, li {
+    position: relative;
+}
+body {
+    font-family: $font;
+    font-size: map-get($fontSize, norma);
+    font-weight: 400;
+    color: #4d4d4d;
+    line-height: 22px;
+    min-width: 970px;
+    margin: 0;
+}
+blockquote, q {
+    quotes: none;
+}
+.clear {
+    clear: both;
+}
+hr {
+    width: 100%;
+    height: 1px;
+    margin: map-get($margin, hr);
+    border: none;
+    background-color: #ededee;
+}
+a {
+    color: #0072bb;
+    text-decoration: none;
+    border-bottom: 1px solid #cce3f1;
+    outline: none;
+    &:hover {
+        color: #009ee2;
+        text-decoration: none;
+        border-color: transparent;
+    }
+    &:focus {
+        text-decoration: none;
+        outline: none;
+        border-color: transparent;
+    }
+    &:active {
+        outline: none;
+    }
+}
+h1 {
+    font-size: map-get($fontSize, h1);
+    margin: map-get($margin, h1);
+    line-height: map-get($lineHeight, h1);
+}
+h2 {
+    font-size: map-get($fontSize, h2);
+    margin: map-get($margin, h2);
+    line-height: map-get($lineHeight, h2);
+}
+h3 {
+    font-size: map-get($fontSize, h3);
+    margin: map-get($margin, h3);
+    line-height: map-get($lineHeight, h3);
+}
+p {
+    margin: map-get($margin, p);
+}
+ul {
+    margin: map-get($margin, ul);
+    li {
+        list-style: none;
+        &:before {
+            content: "\2022";
+            position: absolute;
+            top: 0;
+            left: -10px;
+        }
+    }
+}
+ol {
+    margin: map-get($margin, ol);
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+table {
+    width: 100%;
+    margin: map-get($margin, ol);
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    thead {
+        th, td {}
+    }
+    tbody {
+        border: none;
+    }
+    tr.odd, tr.even {
+        background-color: transparent;
+    }
+    td, th {
+        border: none;
+        padding: 0 14px 0;
+        line-height: 36px;
+    }
+}
+table.nostyle {
+    border: none;
+    thead {
+        background-color: transparent;
+    }
+    tr {
+        background-color: transparent;
+        th, td {
+            border: none;
+            padding: 0;
+            line-height: inherit !important;
+        }
+    }
+}
+
+@include max-screen(991px) {
+    .table-m-column {
+        display: block;
+        margin-top: 20px;
+        border: none;
+        tbody {
+            display: block;
+        }
+        tr {
+            display: block;
+        }
+        td, th {
+            display: block;
+            width: 100% !important;
+            padding: 0;
+        }
+    }
+    .table-m-nobg {
+        tr {
+            background-color: transparent !important;
+        }
+    }
+}

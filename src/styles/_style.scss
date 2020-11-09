@@ -1,0 +1,37 @@
+.container {
+    @include max-screen(1199px) {
+        width: 970px;
+    }
+    @include max-screen(991px) {
+        width: 750px;
+    }
+    @include max-screen(767px) {
+        width: 570px;
+    }
+    @include max-screen(576px) {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    width: 1140px;
+    margin: 0 auto;
+}
+.noscroll {}
+.table-wrapper {
+    overflow: auto;
+}
+a.lightgallery {
+    border-bottom: none;
+}
+ul.slick-dots li button, .slick-slide, .slick-arrow {
+    outline: none;
+}
+.margin {
+    margin: map-get($margin, block);
+}
+.margin-small {
+    margin: map-get($margin, block2);
+}
+.padding {
+    padding: $padding;
+}

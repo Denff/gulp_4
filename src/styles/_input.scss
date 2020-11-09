@@ -1,0 +1,29 @@
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    width: 100%;
+    padding: 9px 15px 11px;
+    // color: $color2;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    font-size: map-get($fontSize, input);
+    box-shadow: none;
+    border-radius: 7px;
+    // border: 1px solid $color2;
+    background-color: transparent;
+    // @include placeholder() { opacity: 1; color: $color2; }
+    &:hover {
+        // border-color: $color1;
+    }
+    &:focus {
+        // border-color: $color1;
+        @include placeholder() {
+            opacity: 0;
+        }
+        outline: none;
+    }
+}
+textarea {
+    resize: none;
+}
+input[type="submit"] {
+    outline: none;
+}

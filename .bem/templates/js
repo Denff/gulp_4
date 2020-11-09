@@ -1,0 +1,31 @@
+'use strict';
+
+var EOL = require('os').EOL;
+
+module.exports = function(entity, naming) {
+    return [
+
+`(function($) {
+    if (typeof Drupal !== 'undefined') {
+        Drupal.behaviors.${naming.stringify(entity)} = {
+            attach: function(context, settings) {
+                init();
+            }
+        };
+    } else {
+        init();
+    }
+
+    function init() {
+        // Ваш код
+    }
+
+    $(document).ready(function(){
+        // Ваш код
+    });
+
+})(jQuery);
+`
+
+    ].join(EOL);
+};

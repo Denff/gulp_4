@@ -1,0 +1,118 @@
+// перелинковка страниц для верстки
++b.gulp-pages
+    +e.menu.LABEL(for='checkbox-gulp-pages')
+        +e.burger.SPAN
+        //+e.menu-name.SPAN #2 PAGES:
+    +e.checkbox.INPUT(type='checkbox')#checkbox-gulp-pages
+    +e.content
+        +e.inner
+            +e.pages
+                ul
+                    li
+                        div(style="font-weight: 700; border-bottom: 1px solid #bfbdbd;") Страницы
+                    li
+                        a(href="index.html") главная
+
+style.
+    .gulp-pages {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        font-family: arial;
+        font-size: 14px;
+        color: #000000;
+    }
+    /*.gulp-pages input { display: none; }*/
+    .gulp-pages__menu {
+        background-color: gainsboro;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 34px;
+        padding: 0;
+    }
+    .gulp-pages__menu-name { margin-left: 10px; line-height: 1; }
+    .gulp-pages__burger { height: 2px; width: 24px; background-color: black; display: inline-block; position: relative; }
+    .gulp-pages__burger:before,
+    .gulp-pages__burger:after { content: ''; position: absolute; right: 0; left: 0; background-color: black; height: 2px; width: 100%; margin: auto; transition: all 0.25s ease-in-out; }
+    .gulp-pages__burger::before { top: -6px; }
+    .gulp-pages__burger::after { bottom: -6px; }
+    .gulp-pages__title {
+    	margin: 0 0 10px;
+        border-bottom: 1px solid #bfbdbd;
+        font-weight: 900;
+    }
+    .gulp-pages__content {
+        display: none;
+        position: absolute;
+        top: 34px;
+        left: 0;
+        z-index: 999;
+        background-color: gainsboro;
+        padding: 15px;
+        border: 1px solid lightgray;
+        border-radius: 0 5px 5px 0;
+    }
+    .gulp-pages__inner {
+    	display: flex;
+    }
+    .gulp-pages__pages {
+        display: flex;
+    }
+    .gulp-pages #checkbox-gulp-pages:checked + .gulp-pages__content { display: block; }
+    .gulp-pages ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .gulp-pages ul li { margin: 0 0 5px; padding: 0; }
+    .gulp-pages ul li:before { display: none; }
+    .gulp-pages a { color: #000000; transition: all 0.2s; border: none; line-height: 1; white-space: nowrap; text-decoration: none; }
+    .gulp-pages a:hover {
+        color: #000000;
+    	text-decoration: underline;
+    }
+    .gulp-pages a.active { color: red; font-weight: 700; }
+    .gulp-pages form { margin: 0 0 20px 0; }
+    .gulp-pages__checkbox {
+        display: none;
+    }
+
+script.
+    [].slice.call(document.querySelectorAll('.gulp-pages a')).forEach(function(el) {
+        if ( el.getAttribute('href') == location.pathname.replace('/', '') ) {
+            el.classList.add('active');
+        }
+    });
+
+script.
+    $(document).ready(function(){
+        $('.color-scheme__color').each(function(){
+            if ( $(this).data('color') === localStorage.getItem('selectedColor') ) {
+                $(this).addClass('active');
+            }
+        });
+        $('.color-scheme__color').on('click', function(){
+            var selectedColor = $(this).data('color');
+            localStorage.setItem('selectedColor', selectedColor);
+            location.reload();
+        });
+        $('<link>')
+            .attr('rel', 'stylesheet')
+            .attr('type', 'text/css')
+            .attr('href', 'css/color-scheme-' + localStorage.getItem('selectedColor') + '.css')
+            .appendTo('body');
+        $('.gulp-pages').find('a').on('click', function (){
+            var color = $('select#SelectColor').find('option:selected').attr('value');
+        });
+        // ЗАКРЫВЕМ МЕНЮШКУ ПРИ КЛИКЕ ВНЕ
+        $(document).click(function (event) {
+            if ($(event.target).closest(".gulp-pages").length) return;
+            $('#checkbox-gulp-pages').prop('checked', false);
+            event.stopPropagation();
+        });
+    });
+// КОНЕЦ: перелинковка страниц для верстки
